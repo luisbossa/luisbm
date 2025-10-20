@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Bossa</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/projects.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/7433d3320f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div id="home"></div>
+    <div class="header_div">
+        <header data-aos="slide-down" data-aos-duration="600" data-aos-easing="ease-out">
+            <div class="logo">
+                <img class="letter_logo" src="/images/logo.png" alt="logo">uis Bossa
+            </div>
+            <div class="menu_wrap">
+                <ul class="menu">
+                    <li><a href="/#home" class="active">Home</a></li>
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#resume">Resume</a></li>
+                    <li><a href="/#portfolio">Portfolio</a></li>
+                    <li><a href="/#technologies">Technologies</a></li>
+                </ul>
+                <a href="/#contact" class="contact-btn">Contact</a>
+            </div>
+
+            <input hidden="" class="check-icon" id="check-icon" name="check-icon" type="checkbox">
+            <label class="icon-menu" for="check-icon">
+                <div class="bar bar--1"></div>
+                <div class="bar bar--2"></div>
+                <div class="bar bar--3"></div>
+            </label>
+        </header>
+    </div>
+
+    <%- body %>
+
+        <footer>
+            <h3>© <%= new Date().getFullYear() %>, Luis Bossa</h3>
+            <div class="box-icons">
+                <a href="#home" class="top_btn">
+                    <span class="top_span">Back to top</span>
+                    <svg width="22" height="22" viewBox="0 0 48 48" class="b-color" aria-hidden="true">
+                        <defs>
+                            <mask id="circle-up">
+                                <g fill="none" stroke-width="4" stroke-linejoin="round">
+                                    <path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z"
+                                        fill="#fff" stroke="#fff">
+                                    </path>
+                                    <path d="M24 33.5v-18m9 9l-9-9l-9 9" stroke="#000" stroke-linecap="round"></path>
+                                </g>
+                            </mask>
+                        </defs>
+                        <path d="M0 0h48v48H0z" fill="currentColor" mask="url(#circle-up)"></path>
+                    </svg>
+                </a>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+        </script>
+        <script type="text/javascript">
+            (function () {
+                emailjs.init({
+                    publicKey: "9c9UABgvXx_XjFIfd",
+                });
+            })();
+        </script>
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+        <script>
+            AOS.init({
+                easing: 'linear',
+                once: true
+            });
+        </script>
+
+        <script src="/js/navbar.js"></script>
+        <script src="/js/resume.js"></script>
+        <script src="/js/about-cards.js"></script>
+        <script src="/js/marquee.js"></script>
+</body>
+
+</html>
