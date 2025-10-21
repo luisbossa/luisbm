@@ -16,3 +16,7 @@ exports.project4 = (req, res) => {
 exports.project5 = (req, res) => {
   res.render("project-5");
 };
+
+exports.project6 = (req, res) => {
+  res.render("project-6");
+};
