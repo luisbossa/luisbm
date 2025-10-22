@@ -810,7 +810,7 @@ main h2 {
     left: 55%;
   }
   to {
-    left: calc(150rem * -1);
+    left: calc(160rem * -1);
   }
 }
 
