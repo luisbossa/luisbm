@@ -16,10 +16,11 @@
 <body>
     <div id="home"></div>
     <div class="header_div">
-        <header data-aos="slide-down" data-aos-duration="600" data-aos-easing="ease-out">
+        <header data-aos="slide-down" data-aos-duration="600" data-aos-easing="ease-out" style="position: relative;">
             <div class="logo">
                 <img class="letter_logo" src="/images/logo.png" alt="logo">uis Bossa
             </div>
+
             <div class="menu_wrap">
                 <ul class="menu">
                     <li><a href="/#home" class="active">Home</a></li>
@@ -31,13 +32,25 @@
                 <a href="/#contact" class="contact-btn">Contact</a>
             </div>
 
-            <input hidden="" class="check-icon" id="check-icon" name="check-icon" type="checkbox">
+            <input hidden class="check-icon" id="check-icon" name="check-icon" type="checkbox" />
             <label class="icon-menu" for="check-icon">
                 <div class="bar bar--1"></div>
                 <div class="bar bar--2"></div>
                 <div class="bar bar--3"></div>
             </label>
         </header>
+
+        <!-- RESPONSIVE MENU -->
+        <div class="menu_responsive_box">
+            <ul class="menu">
+                <li><a href="/#home" class="active">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#resume">Resume</a></li>
+                <li><a href="/#portfolio">Portfolio</a></li>
+                <li><a href="/#technologies">Technologies</a></li>
+            </ul>
+            <a href="/#contact" class="contact-btn">Contact</a>
+        </div>
     </div>
 
     <%- body %>

@@ -40,3 +40,27 @@ function setActiveLinkOnScroll() {
 
 window.addEventListener("load", setActiveLinkOnScroll);
 window.addEventListener("scroll", setActiveLinkOnScroll);
+
+// RESPONSIVE MENU
+const checkIcon = document.getElementById("check-icon");
+const responsiveMenu = document.querySelector(".menu_responsive_box");
+const menuLinks = responsiveMenu.querySelectorAll("a");
+
+checkIcon.addEventListener("change", () => {
+  if (checkIcon.checked) {
+    responsiveMenu.style.height = responsiveMenu.scrollHeight + "px";
+    responsiveMenu.style.border = "1px solid var(--c-line)";
+    responsiveMenu.style.borderTop = "none";
+  } else {
+    responsiveMenu.style.height = "0";
+    responsiveMenu.style.border = "none";
+  }
+});
+
+menuLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    checkIcon.checked = false;
+    responsiveMenu.style.height = "0";
+    responsiveMenu.style.border = "none";
+  });
+});

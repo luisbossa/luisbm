@@ -126,7 +126,7 @@ a {
   );
   border-bottom-left-radius: 42px;
   border-bottom-right-radius: 42px;
-  z-index: 999;
+  z-index: 100;
 }
 
 header {
@@ -136,10 +136,39 @@ header {
   padding: 1rem 2rem;
   border-radius: 50px;
   border: 1px solid var(--c-line);
+  background: rgb(29, 40, 41);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(29, 40, 41, 1) 0%,
+    rgba(24, 30, 31, 1) 11%,
+    rgba(19, 19, 20, 1) 41%,
+    rgba(19, 19, 20, 1) 58%,
+    rgba(24, 30, 31, 1) 85%,
+    rgba(29, 40, 41, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(29, 40, 41, 1) 0%,
+    rgba(24, 30, 31, 1) 11%,
+    rgba(19, 19, 20, 1) 41%,
+    rgba(19, 19, 20, 1) 58%,
+    rgba(24, 30, 31, 1) 85%,
+    rgba(29, 40, 41, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgb(27, 32, 38) 0%,
+    rgb(24, 26, 31) 11%,
+    rgba(19, 19, 20, 1) 41%,
+    rgba(19, 19, 20, 1) 58%,
+    rgba(24, 26, 31, 1) 85%,
+    rgba(28, 33, 39) 100%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1d2829",endColorstr="#1d2829",GradientType=1);
   box-shadow: var(--shadow-2);
   transition: top 0.3s ease-in-out;
   margin-top: 15px;
+  z-index: 100;
 }
 
 .menu {
@@ -219,6 +248,73 @@ header {
 .contact-btn:hover {
   color: var(--c-white);
   background-color: var(--c-lightblue);
+}
+
+/*---------- RESPONSIVE MENU ----------*/
+
+.menu_responsive_box {
+  width: 90%;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(29, 40, 41);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(29, 40, 41, 1) 0%,
+    rgba(24, 30, 31, 1) 11%,
+    rgba(19, 19, 20, 1) 41%,
+    rgba(19, 19, 20, 1) 58%,
+    rgba(24, 30, 31, 1) 85%,
+    rgba(29, 40, 41, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(29, 40, 41, 1) 0%,
+    rgba(24, 30, 31, 1) 11%,
+    rgba(19, 19, 20, 1) 41%,
+    rgba(19, 19, 20, 1) 58%,
+    rgba(24, 30, 31, 1) 85%,
+    rgba(29, 40, 41, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgb(27, 32, 38) 0%,
+    rgb(24, 26, 31) 11%,
+    rgba(19, 19, 20, 1) 41%,
+    rgba(19, 19, 20, 1) 58%,
+    rgba(24, 26, 31, 1) 85%,
+    rgba(28, 33, 39) 100%
+  );
+  overflow: hidden;
+  height: 0;
+  transition: height 0.35s ease;
+  border-bottom-left-radius: 42px;
+  border-bottom-right-radius: 42px;
+  box-shadow: var(--shadow-2);
+  border: none;
+  z-index: 50;
+}
+
+.menu_responsive_box .menu {
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+
+.menu_responsive_box .menu li {
+  margin: 12px 0;
+  text-align: center;
+}
+
+.menu_responsive_box .contact-btn {
+  display: block;
+  margin: 1rem auto 2rem auto;
+  padding: 12px 30px;
+  width: fit-content;
+}
+
+.check-icon:checked ~ .menu_responsive_box {
+  height: 240px;
 }
 
 /*------ BURGER MENU --------*/
@@ -635,7 +731,7 @@ main h2 {
   border-radius: 15px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  z-index: 500;
+  z-index: 10;
 }
 .cover-pic {
   display: block;
@@ -1491,6 +1587,12 @@ footer {
   }
 }
 
+@media (min-width: 961px) {
+  .menu_responsive_box {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   body {
     padding: 0 20px;
@@ -1512,7 +1614,7 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 490px) {
   main h1 {
     display: none;
   }
