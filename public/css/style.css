@@ -1679,6 +1679,10 @@ footer {
   .language {
     flex: 0 1 60px;
   }
+
+  .skills-group {
+    display: none;
+  }
 }
 
 @media (max-width: 380px) {
