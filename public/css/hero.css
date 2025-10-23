@@ -1,0 +1,127 @@
+.hero {
+  width: 90%;
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 86.7vh;
+}
+
+.title-section {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.hero h1 {
+  text-align: center;
+  font-size: 7.2vw;
+  font-weight: 900;
+  letter-spacing: 5px;
+  line-height: 1;
+  background-image: linear-gradient(rgb(154, 165, 175), rgb(255, 255, 255));
+  color: transparent;
+  background-clip: text;
+}
+
+.hero h2 {
+  text-align: center;
+  font-size: 7.5rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  line-height: 1;
+  background-image: linear-gradient(rgb(133, 133, 133), rgb(255, 255, 255));
+  color: transparent;
+  background-clip: text;
+  display: none;
+}
+
+.bio-section {
+  margin-top: auto;
+  margin-bottom: 2rem;
+}
+
+.bio {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: 1px;
+  max-width: 22rem;
+}
+
+.absolute_img {
+  width: 38%;
+  max-width: 700px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  bottom: -4rem;
+  transform: translateX(-50%);
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.4));
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 1020px) {
+  .hero {
+    width: 100%;
+  }
+
+  .absolute_img {
+    width: 55%;
+    bottom: -3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    width: 95%;
+    min-height: auto;
+    padding-bottom: 8rem;
+  }
+
+  .absolute_img {
+    width: 80%;
+    position: relative;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    z-index: 0;
+    margin-top: 2rem;
+  }
+
+  .title-section {
+    margin-top: 2rem;
+  }
+
+  .bio-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 490px) {
+  .hero h2 {
+    display: block;
+    margin-top: -3rem;
+  }
+
+  .bio-section {
+    margin-bottom: 1rem;
+  }
+
+  .bio {
+    font-size: 0.8rem;
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h2 {
+    font-size: 6rem;
+  }
+}
