@@ -4,13 +4,13 @@
   margin-top: 19rem;
 }
 
-.section-header {
+.contact-header {
   text-align: center;
   margin-bottom: 40px;
 }
 
-.section-header h3 {
-  font-size: 4rem;
+.contact-header h3 {
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700;
   margin-bottom: 15px;
   background-image: linear-gradient(rgb(133, 133, 133), rgb(255, 255, 255));
@@ -18,14 +18,13 @@
   background-clip: text;
 }
 
-.section-header p {
+.contact-header p {
   max-width: 600px;
   line-height: 1.6;
   color: var(--c-light_gray);
   margin: 0 auto;
 }
 
-/* CONTACT GRID */
 .contact-grid {
   display: grid;
   grid-template-columns: 40% 60%;
@@ -124,7 +123,6 @@
   background-color: var(--c-lightblue);
 }
 
-/* FORM STYLE */
 .form-group {
   margin-bottom: 20px;
 }

@@ -48,7 +48,7 @@
 }
 
 .services_title {
-  font-size: 4.5vw;
+  font-size: clamp(3rem, 6vw, 5rem);
   color: transparent;
   margin-bottom: 20px;
   background-clip: text;

@@ -1,12 +1,12 @@
 .tech_section {
   width: 90%;
-  height: 380px;
   margin-top: 19rem;
   visibility: visible;
   transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   transition: all, opacity 2s cubic-bezier(0.5, 0, 0, 1),
     transform 2s cubic-bezier(0.5, 0, 0, 1);
-  scroll-margin-top: 200px;
+  scroll-margin-top: 190px;
+  text-align: center;
   opacity: 1;
 }
 
@@ -16,8 +16,17 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 10rem;
   gap: 4rem;
+}
+
+.tech-header h3 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  margin-bottom: 15px;
+  background-image: linear-gradient(rgb(133, 133, 133), rgb(255, 255, 255));
+  color: transparent;
+  background-clip: text;
 }
 
 .language {
