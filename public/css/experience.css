@@ -1,0 +1,242 @@
+.experience {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.experience p {
+  font-size: 1.5rem;
+}
+
+.scroll-down {
+  height: 5rem;
+  width: 2rem;
+  position: absolute;
+  right: 2%;
+  bottom: 5%;
+  border-radius: 50px;
+  border: 1px solid var(--c-secondary);
+  background-color: var(--c-mate);
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+  background-image: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.35)
+    ),
+    url(/images/bg02.webp);
+  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.35),
+    inset 0px 2px 1px 0px rgba(255, 255, 255, 0.35);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.scroll-down::before,
+.scroll-down::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 10px;
+  width: 10px;
+  transform: translate(-50%, -100%) rotate(45deg);
+  border: 2px solid var(--c-secondary);
+  border-top: transparent;
+  border-left: transparent;
+  animation: scroll-down 3s ease-in-out infinite;
+}
+
+.scroll-down::before {
+  top: 30%;
+  animation-delay: 0.8s;
+}
+
+@keyframes scroll-down {
+  0% {
+    opacity: 0;
+  }
+  30%,
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: 90%;
+  }
+}
+
+/*-------- TAB EXP SECTION ---------*/
+
+.exp_section {
+  width: 90%;
+  height: auto;
+  border-radius: 24px;
+  padding: 30px 0 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 0;
+  background-color: var(--c-mate);
+  background-image: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.35)
+    ),
+    url(/images/bg02.webp);
+  border-top: 0;
+  margin-top: 19rem;
+  box-shadow: var(--shadow);
+  scroll-margin-top: 8rem;
+}
+
+.exp_title {
+  font-size: 4.5vw;
+  color: transparent;
+  background-clip: text;
+  padding: 0 30px 20px 30px;
+  background-image: linear-gradient(rgb(133, 133, 133), rgb(255, 255, 255));
+}
+
+.tabs {
+  width: 100%;
+  border-top: 1px solid var(--c-line);
+  padding: 10px 0 30px 30px;
+}
+
+.radio_wrap {
+  width: 286px;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.tab-label {
+  display: inline-block;
+  padding: 12px 20px;
+  margin-top: 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--c-light_gray);
+  background-color: var(--c-primary);
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+  background-image: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.35)
+    ),
+    url(/images/bg02.webp);
+  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.35),
+    inset 0px 2px 1px 0px rgba(255, 255, 255, 0.35);
+  border-left: 1px solid var(--c-line);
+  border-right: 1px solid var(--c-line);
+  transition: 0.3s;
+  white-space: nowrap;
+  border-radius: 6px 6px 0 0;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#tab1:checked ~ .radio_wrap label[for="tab1"],
+#tab2:checked ~ .radio_wrap label[for="tab2"] {
+  color: var(--c-white);
+  background: var(--c-lightblue);
+}
+
+.tab-label.active {
+  color: var(--c-white);
+  background: var(--c-lightblue);
+}
+
+.tab-input {
+  display: none;
+}
+
+.tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 30px 20px 30px;
+  border-left: 1px solid var(--c-line);
+  border-bottom: 1px solid var(--c-line);
+  border-bottom-left-radius: 20px;
+  gap: 15px;
+}
+
+.contents .box {
+  position: relative;
+  padding: 24px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  border: 1px solid var(--c-line);
+  transition: all 0.4s;
+}
+
+.contents .box::before {
+  width: 12px;
+  height: 12px;
+  content: "";
+  position: absolute;
+  top: 23px;
+  right: calc(100% + 24px);
+  border-radius: 50%;
+  border: 1px solid var(--c-line);
+  background-color: var(--c-secondary);
+}
+
+.contents .box::after {
+  content: "";
+  width: 25px;
+  height: 1px;
+  position: absolute;
+  top: 30px;
+  right: calc(100% + 0px);
+  background-color: var(--c-line);
+}
+
+.box h4 {
+  position: relative;
+  color: var(--c-secondary);
+}
+
+.box h3 {
+  font-size: 19px;
+  padding: 10px 0px 6px;
+  font-family: helvetica;
+  color: var(--c-white);
+}
+
+.box p {
+  line-height: 1.6;
+  color: var(--c-light_gray);
+  font-size: 17px;
+}
+
+@media (max-width: 1020px) {
+  .exp_section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .exp_section {
+    margin: 4rem auto;
+  }
+
+  .experience {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .experience p {
+    font-size: 1rem;
+  }
+}
