@@ -549,20 +549,29 @@
             <div class="info-card-content">
                 <h3>Send Message</h3>
 
-                <form action="/">
+                <form id="contactForm">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name"
+                        <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name"
                             class="form-control">
+                        <div class="span-div">
+                            <span class="error-message" id="errorName"></span>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required
-                            autocomplete="email" class="form-control">
+                        <input type="email" id="email" name="email" placeholder="Your Email" autocomplete="email"
+                            class="form-control">
+                        <div class="span-div">
+                            <span class="error-message" id="errorEmail"></span>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <textarea name="message" id="message" placeholder="Your Message" required
+                        <textarea name="message" id="message" placeholder="Your Message"
                             class="form-control"></textarea>
+                        <div class="span-div">
+                            <span class="error-message" id="errorMessage"></span>
+                        </div>
                     </div>
 
                     <button type="submit" id="submitBtn" class="message-btn">Send Message</button>

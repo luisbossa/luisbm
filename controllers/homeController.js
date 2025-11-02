@@ -1,18 +1,38 @@
 const nodemailer = require("nodemailer");
 
 exports.home = (req, res) => {
-  res.render("index");
+  // Siempre definimos message, errors y old
+  res.render("index", {
+    message: null,
+    errors: {},
+    old: {},
+  });
 };
 
 exports.send = async (req, res) => {
-  let output = `
-    <ul>
-      <li>Name: ${req.body.name}</li>
-      <li>Email: ${req.body.email}</li>
-      <li>Description: ${req.body.description}</li>
-    </ul>
-  `;
+  const { name, email, description } = req.body;
+  let errors = {};
 
+  // --- VALIDACIONES ---
+  if (!name || name.trim() === "") {
+    errors.name = "Please enter your name";
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    errors.email = "Please enter a valid email";
+  }
+
+  if (!description || description.trim() === "") {
+    errors.description = "Please enter your message";
+  }
+
+  // --- SI HAY ERRORES, ENVIAR JSON ---
+  if (Object.keys(errors).length > 0) {
+    return res.json({ success: false, errors });
+  }
+
+  // --- CONFIGURAR NODEMAILER ---
   const transporter = nodemailer.createTransport({
     service: "gmail",
     port: 465,
@@ -22,8 +42,15 @@ exports.send = async (req, res) => {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
-    secure: true,
   });
+
+  const output = `
+    <ul>
+      <li><strong>Name:</strong> ${name}</li>
+      <li><strong>Email:</strong> ${email}</li>
+      <li><strong>Description:</strong> ${description}</li>
+    </ul>
+  `;
 
   const mailOptions = {
     to: process.env.EMAIL_USER,
@@ -32,12 +59,17 @@ exports.send = async (req, res) => {
     html: output,
   };
 
+  // --- ENVIAR EL CORREO ---
   try {
     await transporter.sendMail(mailOptions);
-    return res
-      .status(200)
-      .render("index", { message: "Email sent successfully" });
-  } catch (error) {
-    return res.status(500).render("index", { message: "Error sending email" });
+
+    // Éxito
+    return res.json({ success: true });
+  } catch (err) {
+    console.error("Error sending email:", err);
+    return res.json({
+      success: false,
+      errors: { send: "Error sending email. Please try again later." },
+    });
   }
 };
