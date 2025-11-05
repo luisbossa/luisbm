@@ -78,8 +78,18 @@ footer {
 }
 
 @media (max-width: 490px) {
-  .box-icons {
+  .top_span {
     display: none;
+  }
+
+  .top_btn {
+    padding: 0.46rem 6px 0.37rem 6px;
+  }
+
+  .top_btn svg {
+    width: 26px;
+    height: 26px;
+    color: var(--c-secondary);
   }
 
   footer h3 {

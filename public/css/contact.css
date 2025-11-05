@@ -148,7 +148,31 @@ textarea.form-control {
   resize: none;
 }
 
+.spinner {
+  width: 20px;
+  height: 20px;
+  display: none;
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #fff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 .message-btn {
+  position: relative;
   width: 100%;
   padding: 12px;
   margin-top: 13px;
@@ -176,6 +200,18 @@ textarea.form-control {
 .message-btn:hover {
   color: var(--c-white);
   background-color: var(--c-lightblue);
+}
+
+.message-btn.loading {
+  pointer-events: none;
+}
+
+.message-btn.loading #btnText {
+  visibility: hidden;
+}
+
+.message-btn.loading #loadingSpinner {
+  display: block;
 }
 
 .span-div {

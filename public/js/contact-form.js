@@ -3,6 +3,9 @@ const successMessage = document.getElementById("successMessage");
 const errorName = document.getElementById("errorName");
 const errorEmail = document.getElementById("errorEmail");
 const errorMessage = document.getElementById("errorMessage");
+const submitBtn = document.getElementById("submitBtn");
+const btnText = document.getElementById("btnText");
+const loadingSpinner = document.getElementById("loadingSpinner");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -19,6 +22,8 @@ form.addEventListener("submit", async (e) => {
     description: document.getElementById("message").value.trim(),
   };
 
+  submitBtn.classList.add("loading");
+
   try {
     const response = await fetch("/send", {
       method: "POST",
@@ -33,7 +38,6 @@ form.addEventListener("submit", async (e) => {
       form.reset();
       form.scrollIntoView({ behavior: "smooth" });
     } else {
-      // Mostrar errores con animación
       if (result.errors.name) {
         errorName.textContent = result.errors.name;
         errorName.classList.add("show");
@@ -57,5 +61,7 @@ form.addEventListener("submit", async (e) => {
     successMessage.textContent = "Error sending email. Please try again later.";
     successMessage.classList.add("show");
     form.scrollIntoView({ behavior: "smooth" });
+  } finally {
+    submitBtn.classList.remove("loading");
   }
 });
