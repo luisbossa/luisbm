@@ -252,6 +252,12 @@ textarea.form-control {
   transform: translateY(0);
 }
 
+.success-message.hide {
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 @media (max-width: 1020px) {
   .contact-section {
     width: 100%;

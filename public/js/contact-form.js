@@ -10,18 +10,22 @@ const loadingSpinner = document.getElementById("loadingSpinner");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  // Limpiar mensajes de error
   [errorName, errorEmail, errorMessage].forEach((el) => {
     el.textContent = "";
     el.classList.remove("show");
   });
   successMessage.classList.remove("show");
+  successMessage.classList.remove("hide");
 
+  // Preparar datos para enviar
   const data = {
     name: document.getElementById("name").value.trim(),
     email: document.getElementById("email").value.trim(),
     description: document.getElementById("message").value.trim(),
   };
 
+  // Activar el spinner y desactivar el botón
   submitBtn.classList.add("loading");
 
   try {
@@ -37,6 +41,10 @@ form.addEventListener("submit", async (e) => {
       successMessage.classList.add("show");
       form.reset();
       form.scrollIntoView({ behavior: "smooth" });
+
+      setTimeout(() => {
+        successMessage.classList.add("hide");
+      }, 3000);
     } else {
       if (result.errors.name) {
         errorName.textContent = result.errors.name;
@@ -61,6 +69,10 @@ form.addEventListener("submit", async (e) => {
     successMessage.textContent = "Error sending email. Please try again later.";
     successMessage.classList.add("show");
     form.scrollIntoView({ behavior: "smooth" });
+
+    setTimeout(() => {
+      successMessage.classList.add("hide");
+    }, 3000);
   } finally {
     submitBtn.classList.remove("loading");
   }
