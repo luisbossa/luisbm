@@ -16,7 +16,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 6rem auto;
+  margin: 6rem auto 2rem auto;
   gap: 4rem;
 }
 
@@ -36,6 +36,7 @@
 }
 
 .language img {
+  width: clamp(3rem, 8vw, 7rem);
   height: auto;
   display: block;
 }
@@ -63,21 +64,19 @@
   opacity: 1;
 }
 
-.language img {
-  height: 7rem;
-}
-
 @media (max-width: 1020px) {
   .tech_section {
     width: 100%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .tech_section {
-    margin: 0 auto;
+    margin-top: 8rem;
   }
+}
 
+@media (max-width: 768px) {
   .tech_div {
     gap: 1.5rem;
   }
@@ -90,10 +89,6 @@
 @media (max-width: 490px) {
   .tech_div {
     gap: 1rem;
-  }
-
-  .language img {
-    height: 2rem;
   }
 
   .language {

@@ -286,11 +286,6 @@
     min-width: 250px;
   }
 
-  .bento_divider {
-    width: 270px;
-    height: auto;
-  }
-
   .card-title {
     font-size: 1.2rem;
     margin-top: 0;
@@ -304,6 +299,14 @@
   .profile-card {
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
+  }
+
+  .bento_divider {
+    width: 100%;
+  }
+
+  .about-text {
+    max-width: 100%;
   }
 }
 
@@ -330,15 +333,19 @@
   .about-section {
     margin: 4rem auto;
   }
+
+  .skills-group {
+    display: none;
+  }
+  
+  .tech-card-text {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 490px) {
   .about-title {
     font-size: 3rem;
-  }
-
-  .bento_divider {
-    width: 100%;
   }
 
   .profile-card {

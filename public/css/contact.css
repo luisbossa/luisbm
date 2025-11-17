@@ -268,11 +268,9 @@ textarea.form-control {
   .contact-grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 768px) {
   .contact-section {
-    margin-top: 10rem;
+    margin-top: 4rem;
   }
 }
 
