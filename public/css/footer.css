@@ -92,6 +92,10 @@ footer {
     color: var(--c-secondary);
   }
 
+  footer {
+    padding: 15px 22px;
+  }
+
   footer h3 {
     font-size: 1rem;
   }

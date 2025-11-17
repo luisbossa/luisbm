@@ -29,12 +29,6 @@
   position: relative;
 }
 
-.video-wrapper {
-  position: relative;
-  display: block;
-  overflow: hidden;
-}
-
 .slider .list .item {
   width: 46rem;
   height: auto;
@@ -374,13 +368,16 @@
   .flex-layout {
     flex-direction: column;
   }
+
   .project-image,
   .project-details {
     flex: 1 1 100%;
   }
+
   .projects-section {
     margin-top: 4rem;
   }
+
   .project-title {
     text-align: center;
   }
