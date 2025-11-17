@@ -10,7 +10,7 @@
 
 .projects-section h3 {
   margin-bottom: 40px;
-  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  font-size: clamp(2.1rem, 6vw, 4.5rem);
   background-image: linear-gradient(rgb(133, 133, 133), rgb(255, 255, 255));
   color: transparent;
   background-clip: text;
@@ -35,43 +35,23 @@
   overflow: hidden;
 }
 
-.video-wrapper video,
-.video-wrapper .video-placeholder {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 13px;
-}
-
-.video-placeholder {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  transition: opacity 0.4s ease;
-}
-
-.video-placeholder.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .slider .list .item {
   width: 46rem;
-  max-width: 90%;
   height: auto;
   position: absolute;
-  top: 2rem;
+  top: 29px;
   left: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.2rem;
+  justify-content: start;
+  padding: 15px 15px 20px 15px;
   animation: autoRun 25s linear infinite;
   animation-delay: calc(
     (25s / var(--quantity)) * (var(--position) - 1) - 10s
   ) !important;
-  box-shadow: rgba(0, 0, 0, 0.15) 2px 2px 4px;
+  transition: 0.2s;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   background: var(--c-lightblue);
@@ -83,7 +63,6 @@
     url(/images/bg02.webp);
   overflow: hidden;
   gap: 5px;
-  transition: 0.2s;
 }
 
 .slider .list .item video {
@@ -97,7 +76,7 @@
     left: 50%;
   }
   to {
-    left: -180rem;
+    left: calc(180rem * -1);
   }
 }
 
@@ -116,6 +95,7 @@
 
 .category-info {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding-bottom: 10px;
 }
@@ -123,45 +103,49 @@
 .title a {
   width: 100%;
   font-weight: 600;
-  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  font-size: 23px;
+  line-height: 34px;
   display: flex;
   color: var(--c-white);
   align-items: center;
+  justify-content: start;
   gap: 8px;
 }
 
 .project-description {
   width: 100%;
-  line-height: 1.35;
+  line-height: 1.3;
   margin-top: 5px;
-  font-size: clamp(0.9rem, 2.8vw, 1rem);
+  font-size: 1rem;
 }
 
 .tech-pill {
   display: inline-block;
-  font-size: clamp(0.7rem, 2.6vw, 0.9rem);
+  font-size: 14px;
   font-weight: 600;
   color: var(--c-line);
-  padding: 0.35rem 0.7rem;
+  padding: 5px 10px;
   border-radius: 15px;
+  margin-right: 3px;
   background-color: var(--c-white);
-  margin: 2px;
 }
 
 .read-more {
   width: fit-content;
   display: block;
   color: var(--c-secondary);
+  text-decoration: none;
   font-weight: bold;
+  margin-top: 5px;
   border-bottom: 1px solid transparent;
-  transition: 0.3s;
+  transition: border-color 0.3s ease;
 }
 
 .read-more:hover {
   border-bottom: 1px solid var(--c-secondary);
 }
 
-.container {
+.project-container {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -169,19 +153,56 @@
 
 .flex-layout {
   display: flex;
-  gap: 2.5rem;
+  flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 1rem;
+  gap: 2.5rem;
 }
 
 .project-image {
-  flex: 1 1 35%;
+  position: relative;
+  flex: 1 1 30%;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+}
+
+.skeleton {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #eee, #ddd, #eee);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .project-preview-img {
   width: 100%;
+  object-fit: contain;
   border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.project-preview-img.loaded {
+  opacity: 1;
+}
+
+.project-image .project-preview-img.loaded + .skeleton,
+.project-image .skeleton.hidden {
+  display: none;
 }
 
 .project-details {
@@ -192,16 +213,44 @@
   line-height: 1.6;
 }
 
+.project-details > div {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.project-details > div:last-child {
+  border-bottom: none;
+}
+
 .project-title {
   color: var(--c-secondary);
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-size: 2rem;
   font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 .section-title {
   color: var(--c-white);
-  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-size: 1.2rem;
   font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-pill {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-line);
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin-right: 3px;
+  background-color: var(--c-white);
 }
 
 .links-list {
@@ -211,19 +260,72 @@
 }
 
 .project-btn {
-  padding: 0.65rem 1.5rem;
-  font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
   border-radius: 50px;
+  padding: 10px 1.5rem;
   color: var(--c-light_gray);
   text-transform: uppercase;
   background-color: var(--c-primary);
-  cursor: pointer;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  border-right: 1px solid rgba(255, 255, 255, 0.35);
+  background-image: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.35)
+    ),
+    url(/images/bg02.webp);
+  box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.35),
+    inset 0px 2px 1px 0px rgba(255, 255, 255, 0.35);
   transition: 0.3s;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .project-btn:hover {
   color: var(--c-white);
   background-color: var(--c-lightblue);
+}
+
+/* Dates */
+.date-info {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.features ul,
+.future-improvements ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  margin-top: 0.5rem;
+}
+
+.features li,
+.future-improvements li {
+  margin-bottom: 0.3rem;
+}
+
+.meta {
+  text-align: right;
+}
+
+.meta span i {
+  margin-right: 2px;
+  font-size: 13px;
+}
+
+.meta span a i {
+  margin-right: 2px;
+  font-size: 13px;
 }
 
 @media (max-width: 1400px) {
@@ -282,15 +384,20 @@
   .project-title {
     text-align: center;
   }
+
+  .meta {
+    margin-top: 5px;
+  }
 }
 
 @media (max-width: 490px) {
-  .meta {
-    display: none;
-  }
   .tech-pill,
   .project-pill {
     font-size: 0.75rem;
     padding: 0.25rem 0.6rem;
+  }
+
+  .project-container {
+    padding: 20px 10px;
   }
 }

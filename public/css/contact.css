@@ -10,7 +10,7 @@
 }
 
 .contact-header h3 {
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2.1rem, 6vw, 4.5rem);
   font-weight: 700;
   margin-bottom: 15px;
   background-image: linear-gradient(rgb(133, 133, 133), rgb(255, 255, 255));
@@ -277,5 +277,13 @@ textarea.form-control {
 @media (max-width: 490px) {
   .contact-section {
     margin-top: 0;
+  }
+
+  .info-card {
+    padding: 20px;
+  }
+
+  .info_wrap {
+    padding-left: 0;
   }
 }

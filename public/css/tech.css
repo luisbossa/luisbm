@@ -16,12 +16,12 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 6rem auto 2rem auto;
+  margin: 6rem auto 5.2rem auto;
   gap: 4rem;
 }
 
 .tech-header h3 {
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2.1rem, 6vw, 4.5rem);
   font-weight: 700;
   margin-bottom: 15px;
   background-image: linear-gradient(rgb(133, 133, 133), rgb(255, 255, 255));

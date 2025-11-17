@@ -10,7 +10,6 @@ const loadingSpinner = document.getElementById("loadingSpinner");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Limpiar mensajes de error
   [errorName, errorEmail, errorMessage].forEach((el) => {
     el.textContent = "";
     el.classList.remove("show");
@@ -18,14 +17,12 @@ form.addEventListener("submit", async (e) => {
   successMessage.classList.remove("show");
   successMessage.classList.remove("hide");
 
-  // Preparar datos para enviar
   const data = {
     name: document.getElementById("name").value.trim(),
     email: document.getElementById("email").value.trim(),
     description: document.getElementById("message").value.trim(),
   };
 
-  // Activar el spinner y desactivar el botón
   submitBtn.classList.add("loading");
 
   try {

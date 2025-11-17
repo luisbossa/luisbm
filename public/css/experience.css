@@ -88,7 +88,7 @@
 }
 
 .exp_title {
-  font-size: 4.5vw;
+  font-size: clamp(2.1rem, 6vw, 4.5rem);
   color: transparent;
   background-clip: text;
   padding: 0 30px 20px 30px;
@@ -172,7 +172,7 @@
 
 .contents .box {
   position: relative;
-  padding: 24px;
+  padding: 20px;
   margin-bottom: 10px;
   border-radius: 15px;
   border: 1px solid var(--c-line);
@@ -180,9 +180,9 @@
 }
 
 .contents .box::before {
+  content: "";
   width: 12px;
   height: 12px;
-  content: "";
   position: absolute;
   top: 23px;
   right: calc(100% + 24px);
@@ -241,17 +241,30 @@
   }
 
   .tabs {
-    padding-left: 18px;
+    padding-left: 20px;
     padding-bottom: 15px;
   }
 
   .contents {
     border: none;
-    padding: 20px 16px 0 0px;
+    padding: 20px 20px 0 0px;
   }
 
   .contents .box::before,
   .contents .box::after {
     display: none;
+  }
+
+  .scroll-down {
+    width: 1.8rem;
+    height: 4.2rem;
+    bottom: 0;
+  }
+
+  .scroll-down::before,
+  .scroll-down::after {
+    width: 8px;
+    height: 8px;
+    left: 48.6%;
   }
 }

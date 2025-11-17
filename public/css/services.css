@@ -48,7 +48,7 @@
 }
 
 .services_title {
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: clamp(2.1rem, 6vw, 4.5rem);
   color: transparent;
   margin-bottom: 20px;
   background-clip: text;
@@ -92,5 +92,13 @@
 @media (max-width: 768px) {
   .services_section {
     margin: 4rem auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .service_1,
+  .service_2,
+  .service_3 {
+    padding: 20px;
   }
 }
