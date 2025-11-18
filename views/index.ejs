@@ -158,15 +158,16 @@
         <div class="card passion" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="300">
             <h2 class="card-title">Development Toolbox</h2>
             <p class="tech-card-text">
-                <strong>Core: </strong>HTML, CSS, JavaScript, TypeScript, PHP
+                <span class="tech-span">Core: </span>HTML, CSS, JavaScript, TypeScript, PHP
                 <br>
-                <strong>Frameworks & Libraries: </strong>Next, React, Laravel, Tailwind CSS, Bootstrap, Sass
+                <span class="tech-span">Frameworks & Libraries: </span>Next, React, Laravel, Tailwind CSS, Bootstrap,
+                Sass
                 <br>
-                <strong>Backend & Templating: </strong>Node.js, EJS, Pug
+                <span class="tech-span">Backend & Templating: </span>Node.js, EJS, Pug
                 <br>
-                <strong>CMS:</strong> WordPress, Elementor, Webflow
+                <span class="tech-span">CMS:</span> WordPress, Elementor, Webflow
                 <br>
-                <strong>Version Control:</strong> Git, GitHub
+                <span class="tech-span">Version Control:</span> Git, GitHub
             </p>
 
             <img src="images/skills group.png" alt="" class="skills-group">
@@ -252,8 +253,7 @@
             <div class="item" style="--position: 1">
                 <a href="https://busena.vercel.app/" target="_blank">
 
-                    <video id="projectVideo1" loop playsinline muted preload="auto"
-                        poster="/images/project-poster.gif">
+                    <video id="projectVideo1" loop playsinline muted preload="auto" poster="/images/poster-1.jpg">
                         <source src="/videos/project-1.mp4" type="video/mp4">
                         <source src="/videos/project-1.webm" type="video/webm">
                     </video>
@@ -288,8 +288,7 @@
             <div class="item" style="--position: 2">
                 <a href="https://instatv.vercel.app/" target="_blank">
 
-                    <video id="projectVideo2" loop playsinline muted preload="auto"
-                        poster="/images/project-poster.gif">
+                    <video id="projectVideo2" loop playsinline muted preload="auto" poster="/images/poster-2.png">
                         <source src="/videos/project-2.mp4" type="video/mp4">
                         <source src="/videos/project-2.webm" type="video/webm">
                     </video>
@@ -323,8 +322,7 @@
             <div class="item" style="--position: 3">
                 <a href="https://monchopark.vercel.app/" target="_blank">
 
-                    <video id="projectVideo3" loop playsinline muted preload="auto"
-                        poster="/images/project-poster.gif">
+                    <video id="projectVideo3" loop playsinline muted preload="auto" poster="/images/poster-3.png">
                         <source src="/videos/project-3.mp4" type="video/mp4">
                         <source src="/videos/project-3.webm" type="video/webm">
                     </video>
@@ -357,8 +355,7 @@
             <div class="item" style="--position: 4">
                 <a href="https://hikingguana.vercel.app/" target="_blank">
 
-                    <video id="projectVideo4" loop playsinline muted preload="auto"
-                        poster="/images/project-poster.gif">
+                    <video id="projectVideo4" loop playsinline muted preload="auto" poster="/images/poster-4.jpg">
                         <source src="/videos/project-4.mp4" type="video/mp4">
                         <source src="/videos/project-4.webm" type="video/webm">
                     </video>
@@ -392,8 +389,7 @@
             <div class="item" style="--position: 5">
                 <a href="https://rbt-one.vercel.app/" target="_blank">
 
-                    <video id="projectVideo5" loop playsinline muted preload="auto"
-                        poster="/images/project-poster.gif">
+                    <video id="projectVideo5" loop playsinline muted preload="auto" poster="/images/poster-5.jpg">
                         <source src="/videos/project-5.mp4" type="video/mp4">
                         <source src="/videos/project-5.webm" type="video/webm">
                     </video>
@@ -425,8 +421,7 @@
             <div class="item" style="--position: 6">
                 <a href="https://ecom-nine-alpha.vercel.app/" target="_blank">
 
-                    <video id="projectVideo6" loop playsinline muted preload="auto"
-                        poster="/images/project-poster.gif">
+                    <video id="projectVideo6" loop playsinline muted preload="auto" poster="/images/poster-6.jpg">
                         <source src="/videos/project-6.mp4" type="video/mp4">
                         <source src="/videos/project-6.webm" type="video/webm">
                     </video>
@@ -460,8 +455,7 @@
             <div class="item" style="--position: 7">
                 <a href="https://yabla.vercel.app/" target="_blank">
 
-                    <video id="projectVideo7" loop playsinline muted preload="auto"
-                        poster="/images/project-poster.gif">
+                    <video id="projectVideo7" loop playsinline muted preload="auto" poster="/images/poster-7.jpg">
                         <source src="/videos/project-7.mp4" type="video/mp4">
                         <source src="/videos/project-7.webm" type="video/webm">
                     </video>
@@ -500,7 +494,8 @@
 <section id="technologies" class="tech_section">
     <div class="tech-header" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-duration="300">
         <h3>Technologies</h3>
-        <p><strong>Disclaimer: </strong>This project is built using current web tools like HTML, CSS, JavaScript,
+        <p><span class="tech-span">Disclaimer: </span>This project is built using current web tools like HTML, CSS,
+            JavaScript,
             Node.js, and AOS.</p>
     </div>
 
@@ -596,10 +591,12 @@
                         </div>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="message-btn">
-                        <span id="btnText">Send Message</span>
-                        <div id="loadingSpinner" class="spinner"></div>
-                    </button>
+                    <div class="contact-div">
+                        <button type="submit" id="submitBtn" class="message-btn">
+                            <span id="btnText">Send Message</span>
+                            <div id="loadingSpinner" class="spinner"></div>
+                        </button>
+                    </div>
 
                     <div class="success-message" id="successMessage">
                         Message sent successfully! I'll get back to you soon.

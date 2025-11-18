@@ -112,7 +112,7 @@
   margin-top: 1rem;
   border-radius: 5px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 300;
   color: var(--c-light_gray);
   background-color: var(--c-primary);
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
@@ -207,9 +207,11 @@
 }
 
 .box h3 {
-  font-size: 19px;
+  font-family: Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-transform: uppercase;
   padding: 10px 0px 6px;
-  font-family: helvetica;
   color: var(--c-white);
 }
 

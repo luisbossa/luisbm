@@ -68,7 +68,12 @@ footer {
 
 .top_span {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 300;
+}
+
+.footer-span {
+  font-size: 1.1rem;
+  font-weight: 300;
 }
 
 @media (max-width: 1020px) {

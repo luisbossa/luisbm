@@ -58,8 +58,11 @@
 }
 
 .services_wrap h2 {
+  font-family: Arial, sans-serif;
   font-size: 1.5rem;
   color: var(--c-white);
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .services_wrap p {
