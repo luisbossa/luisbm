@@ -59,7 +59,7 @@
 
 .services_wrap h2 {
   font-family: Arial, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--c-white);
   font-weight: 300;
   text-transform: uppercase;
@@ -103,5 +103,14 @@
   .service_2,
   .service_3 {
     padding: 20px;
+  }
+
+  .services_wrap svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .services_wrap h2 {
+    font-size: 1.1rem;
   }
 }

@@ -291,6 +291,25 @@ textarea.form-control {
   .contact-section {
     margin-top: 4rem;
   }
+
+  .divider {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .contact-item p {
+    font-size: 15px;
+  }
+
+  .message-btn,
+  .social-link a {
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 490px) {

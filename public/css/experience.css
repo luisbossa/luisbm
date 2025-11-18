@@ -235,6 +235,18 @@
   .experience {
     display: none;
   }
+
+  .box h3 {
+    font-size: 1.1rem;
+  }
+  
+  .radio_wrap {
+    width: 273px;
+  }
+
+  .tab-label {
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 490px) {
