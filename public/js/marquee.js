@@ -9,6 +9,7 @@ videos.forEach((video) => {
 
 document.querySelectorAll(".project-preview-img").forEach((img) => {
   img.addEventListener("load", () => {
-    img.previousElementSibling.style.display = "none";
+    const skeleton = img.nextElementSibling;
+    if (skeleton) skeleton.style.display = "none";
   });
 });

@@ -70,7 +70,7 @@
     left: 50%;
   }
   to {
-    left: calc(180rem * -1);
+    left: calc(210rem * -1);
   }
 }
 
@@ -390,6 +390,10 @@
   }
 
   .title a {
+    font-size: 1.1rem;
+  }
+  
+  .section-title {
     font-size: 1.1rem;
   }
 }

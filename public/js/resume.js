@@ -4,14 +4,11 @@ const contents = document.querySelectorAll(".tab-content");
 
 inputs.forEach((input) => {
   input.addEventListener("click", () => {
-    // Quitar clase activa de todos los labels
     labels.forEach((label) => label.classList.remove("active"));
 
-    // Agregar clase activa al label actual
     const label = document.querySelector(`label[for="${input.id}"]`);
     label.classList.add("active");
 
-    // Mostrar el contenido correspondiente
     contents.forEach((content) => content.classList.remove("active"));
 
     const contentId = input.id === "tab1" ? "education" : "experience";
@@ -27,7 +24,6 @@ document.querySelectorAll(".btn-label").forEach((label) => {
   const maxLikes = 5;
   const key = `likeCount_${inputCheckbox.id}`;
 
-  // Cargar el estado desde localStorage
   let storedData = localStorage.getItem(key);
   let count = storedData ? parseInt(storedData) : 0;
   likeCounter.textContent = count;
@@ -52,12 +48,10 @@ document.querySelectorAll(".btn-label").forEach((label) => {
 
     let count = parseInt(likeCounter.textContent);
 
-    // Si ya alcanzó el máximo y no está activado, salir
     if (count >= maxLikes && !inputCheckbox.checked) {
       return;
     }
 
-    // Activar
     if (!inputCheckbox.checked && count < maxLikes) {
       inputCheckbox.checked = true;
       count++;
@@ -72,7 +66,6 @@ document.querySelectorAll(".btn-label").forEach((label) => {
       }
     }
 
-    // Desactivar
     else if (inputCheckbox.checked && count > 0) {
       inputCheckbox.checked = false;
       count--;
