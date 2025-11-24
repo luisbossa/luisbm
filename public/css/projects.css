@@ -382,6 +382,7 @@
   }
 
   .project-title {
+    font-size: 1.3rem;
     text-align: center;
   }
 
@@ -394,7 +395,7 @@
   }
   
   .section-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 
