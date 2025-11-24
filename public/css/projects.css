@@ -70,7 +70,7 @@
     left: 50%;
   }
   to {
-    left: calc(210rem * -1);
+    left: calc(240rem * -1);
   }
 }
 
