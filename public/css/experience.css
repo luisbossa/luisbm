@@ -215,6 +215,10 @@
   color: var(--c-white);
 }
 
+.job-exp {
+  font-weight: 600;
+}
+
 .box p {
   line-height: 1.6;
   color: var(--c-light_gray);
