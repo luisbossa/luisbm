@@ -64,9 +64,7 @@ document.querySelectorAll(".btn-label").forEach((label) => {
         label.classList.add("disabled");
         label.style.pointerEvents = "none";
       }
-    }
-
-    else if (inputCheckbox.checked && count > 0) {
+    } else if (inputCheckbox.checked && count > 0) {
       inputCheckbox.checked = false;
       count--;
       likeCounter.textContent = count;
