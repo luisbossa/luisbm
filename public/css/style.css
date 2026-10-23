@@ -55,6 +55,44 @@ html {
   scroll-behavior: smooth;
 }
 
+/* SCROLLBAR (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(19, 19, 20);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-line);
+  border: 2px solid rgb(19, 19, 20);
+  border-radius: 10px;
+  transition: background var(--transition);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-secondary);
+}
+
+::-webkit-scrollbar-corner {
+  background: rgb(19, 19, 20);
+}
+
+/* SCROLLBAR (Firefox). Solo ahí, porque en Chrome scrollbar-color anula los estilos de arriba */
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-line) rgb(19, 19, 20);
+  }
+}
+
+::selection {
+  background: var(--c-secondary);
+  color: var(--c-black);
+}
+
 body {
   width: 100%;
   background: var(--header-gradient);

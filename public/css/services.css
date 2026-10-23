@@ -1,6 +1,5 @@
 .services_section {
   width: 90%;
-  padding: 30px 0 0 0;
   margin-top: 8rem;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -13,62 +12,138 @@
     ),
     url(/images/bg02.webp);
   box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
-.services_wrap {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1px 1fr 1px 1fr;
-  align-items: stretch;
-  border-top: 1px solid var(--c-line);
-  gap: 0;
-}
-
-.services_divider {
-  width: 1px;
-  height: auto;
-  background-color: var(--c-line);
-  align-self: stretch;
-}
-
-.service_1,
-.service_2,
-.service_3 {
+/* Cabecera: título a la izquierda, intro a la derecha */
+.services_header {
   display: flex;
-  flex-direction: column;
-  padding: 40px 28px 35px 28px;
-  transition: transform 0.3s ease;
-  gap: 1rem;
-}
-
-.service_1:hover,
-.service_2:hover,
-.service_3:hover {
-  transform: translateY(-5px);
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
+  padding: 2.4rem 2.5rem 2rem 2.5rem;
+  border-bottom: 1px solid var(--c-line);
 }
 
 .services_title {
   font-size: clamp(2.1rem, 6vw, 4.5rem);
+  line-height: 1;
   color: transparent;
-  margin-bottom: 20px;
-  background-clip: text;
-  padding-left: 30px;
-  padding-right: 30px;
   background-image: linear-gradient(rgb(133, 133, 133), rgb(255, 255, 255));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.services_intro {
+  max-width: 22rem;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--c-text);
+}
+
+/* Columnas */
+.services_wrap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2.2rem 2.5rem 2.4rem 2.5rem;
+}
+
+.service + .service {
+  border-left: 1px solid var(--c-line);
+}
+
+/* Línea de acento que crece al pasar el ratón */
+.service::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--c-secondary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.service:hover::before {
+  transform: scaleX(1);
+}
+
+.service-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  border: 1px solid var(--c-line);
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.5s ease;
+}
+
+.service-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.service:hover .service-icon {
+  border-color: rgba(226, 245, 173, 0.35);
+}
+
+.service-index {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+  color: #8a8a8a;
 }
 
 .services_wrap h2 {
-  font-family: Arial, sans-serif;
   font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   color: var(--c-white);
-  font-weight: 300;
-  text-transform: uppercase;
 }
 
 .services_wrap p {
-  font-size: 1rem;
-  line-height: 1.6;
+  margin-top: 0.8rem;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
   color: var(--c-light_gray);
+}
+
+/* Etiquetas al pie de cada servicio */
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 1.6rem;
+  list-style: none;
+}
+
+.service-tags li {
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 1px solid var(--c-line);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--c-text);
 }
 
 @media (max-width: 1020px) {
@@ -79,16 +154,16 @@
 
 @media (max-width: 960px) {
   .services_wrap {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .service_2 {
+  .service + .service {
+    border-left: none;
     border-top: 1px solid var(--c-line);
-    border-bottom: 1px solid var(--c-line);
   }
 
-  .divider {
-    border-right: 0;
+  .service-top {
+    margin-bottom: 1.4rem;
   }
 }
 
@@ -96,21 +171,26 @@
   .services_section {
     margin: 4rem auto;
   }
-}
 
-@media (max-width: 768px) {
-  .service_1,
-  .service_2,
-  .service_3 {
-    padding: 20px;
+  .services_header {
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
   }
 
-  .services_wrap svg {
-    width: 28px;
-    height: 28px;
+  .service {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .service-icon svg {
+    width: 22px;
+    height: 22px;
   }
 
   .services_wrap h2 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 }

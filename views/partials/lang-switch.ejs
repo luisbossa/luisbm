@@ -1,0 +1,6 @@
+<div class="lang-switch" role="group" aria-label="<%= t("nav.language") %>">
+    <% languages.forEach((code) => { %>
+    <a href="?lang=<%= code %>" class="lang-option<%= code === lang ? " is-active" : "" %>" hreflang="<%= code %>"
+        lang="<%= code %>" data-lang-link<% if (code === lang) { %> aria-current="true"<% } %>><%= code.toUpperCase() %></a>
+    <% }) %>
+</div>

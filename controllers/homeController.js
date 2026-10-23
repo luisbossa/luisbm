@@ -1,75 +1,38 @@
-const nodemailer = require("nodemailer");
+const { getProjects } = require("../services/projects");
+const { sendContactEmail } = require("../services/mailer");
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 exports.home = (req, res) => {
-  // Siempre definimos message, errors y old
-  res.render("index", {
-    message: null,
-    errors: {},
-    old: {},
-  });
+  res.render("index", { projects: getProjects(req.lang) });
 };
 
 exports.send = async (req, res) => {
-  const { name, email, description } = req.body;
-  let errors = {};
+  const { t } = res.locals;
+  const name = String(req.body.name ?? "").trim();
+  const email = String(req.body.email ?? "").trim();
+  const description = String(req.body.description ?? "").trim();
 
   // --- VALIDACIONES ---
-  if (!name || name.trim() === "") {
-    errors.name = "Please enter your name";
-  }
+  const errors = {};
+  if (!name) errors.name = t("errors.name");
+  if (!EMAIL_REGEX.test(email)) errors.email = t("errors.email");
+  if (!description) errors.description = t("errors.description");
+  else if (description.length > 1000) errors.description = t("errors.tooLong");
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    errors.email = "Please enter a valid email";
-  }
-
-  if (!description || description.trim() === "") {
-    errors.description = "Please enter your message";
-  }
-
-  // --- SI HAY ERRORES, ENVIAR JSON ---
   if (Object.keys(errors).length > 0) {
-    return res.json({ success: false, errors });
+    return res.status(400).json({ success: false, errors });
   }
-
-  // --- CONFIGURAR NODEMAILER ---
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    port: 465,
-    host: "smtp.gmail.com",
-    secure: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-
-  const output = `
-    <ul>
-      <li><strong>Name:</strong> ${name}</li>
-      <li><strong>Email:</strong> ${email}</li>
-      <li><strong>Description:</strong> ${description}</li>
-    </ul>
-  `;
-
-  const mailOptions = {
-    to: process.env.EMAIL_USER,
-    subject: "Node Contact Request",
-    text: "Thanks for contacting me!",
-    html: output,
-  };
 
   // --- ENVIAR EL CORREO ---
   try {
-    await transporter.sendMail(mailOptions);
-
-    // Éxito
+    await sendContactEmail({ name, email, description });
     return res.json({ success: true });
   } catch (err) {
     console.error("Error sending email:", err);
-    return res.json({
+    return res.status(500).json({
       success: false,
-      errors: { send: "Error sending email. Please try again later." },
+      errors: { send: t("errors.send") },
     });
   }
 };

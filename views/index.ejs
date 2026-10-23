@@ -1,673 +1,311 @@
+<% const pad = (n) => String(n).padStart(2, "0"); %>
+
 <section class="hero">
-    <div class="title-section" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">
-        <h1 class="shine">UI DEVELOPER</h1>
+    <div class="title-section" data-aos="fade-up">
+        <h1 class="shine"><%= t("hero.title") %></h1>
         <div class="experience">
-            <p><span style="color: #e2f5ad;">+4 </span>YEARS<br>Of<br>EXPERIENCE</p>
+            <p><%- t("hero.experience") %></p>
         </div>
     </div>
 
-    <div class="bio-section" data-aos="fade-up" data-aos-duration="500">
-        <p class="bio">
-            I CREATE <span style="color: #e2f5ad;">CONSISTENT WEB DESIGNS</span> WITH A
-            <span style="color: #e2f5ad;">CLEAN USER EXPERIENCE</span>.
-        </p>
+    <div class="bio-section" data-aos="fade-up">
+        <p class="bio"><%- t("hero.bio") %></p>
     </div>
 
-    <a href="#about" class="scroll-down" data-aos="fade-up" data-aos-duration="500"></a>
+    <a href="#about" class="scroll-down" aria-label="<%= t("hero.scroll") %>" data-aos="fade-up"></a>
 
-    <img class="absolute_img" src="/images/photo.jpg" alt="personal photo">
+    <img class="absolute_img" src="/images/photo.jpg" alt="Luis Bossa" fetchpriority="high">
 </section>
 
 
 <section id="services" class="services_section">
-    <h2 class="services_title" data-aos="fade-zoom-in" data-aos-duration="300" data-aos-easing="ease-in-out">What I Do
-    </h2>
+    <div class="services_header">
+        <div>
+            <span class="section-label"><%= t("services.label") %></span>
+            <h2 class="services_title" data-aos="fade-up"><%= t("services.title") %></h2>
+        </div>
+        <p class="services_intro"><%= t("services.intro") %></p>
+    </div>
 
     <div class="services_wrap">
-        <div class="service_1" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" aria-hidden="true"
-                stroke="url(#icon-gradient)" fill="url(#icon-gradient)" style="--size:2.5rem">
-                <g>
-                    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"
-                        d="m80 96 40 32-40 32m56 0h40"></path>
-                    <rect width="192" height="160" x="32" y="48" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="16.97" rx="8.5"></rect>
-                </g>
-                <defs>
-                    <linearGradient id="icon-gradient" x1="23" x2="235" y1="43" y2="202" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="var(--c-secondary)"></stop>
-                        <stop offset=".5" stop-color="var(--c-secondary)"></stop>
-                        <stop offset="1" stop-color="var(--c-secondary)"></stop>
-                    </linearGradient>
-                </defs>
-            </svg>
-            <h2>Frontend Development</h2>
-            <p>I build modern and responsive web pages that work well on any device.</p>
+        <% t("services.items").forEach((service, i) => { %>
+        <div class="service service_<%= i + 1 %>" data-aos="fade-up"<% if (i) { %> data-aos-delay="<%= i * 100 %>"<% } %>>
+            <div class="service-top">
+                <span class="service-icon">
+                    <%- include(`partials/icons/service-${i + 1}`) %>
+                </span>
+                <span class="service-index"><%= pad(i + 1) %></span>
+            </div>
+            <h2><%= service.title %></h2>
+            <p><%= service.text %></p>
+            <ul class="service-tags">
+                <% service.tags.forEach((tag) => { %>
+                <li><%= tag %></li>
+                <% }) %>
+            </ul>
         </div>
-        <div class="services_divider"></div>
-        <div class="service_2" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="100">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" aria-hidden="true"
-                stroke="url(#icon-gradient-2)" fill="url(#icon-gradient-2)" style="--size:2.5rem">
-                <defs>
-                    <linearGradient id="icon-gradient-2" x1="23" x2="235" y1="43" y2="202"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="var(--c-secondary)"></stop>
-                        <stop offset=".5" stop-color="var(--c-secondary)"></stop>
-                        <stop offset="1" stop-color="var(--c-secondary)"></stop>
-                    </linearGradient>
-                </defs>
-                <g>
-                    <circle cx="68" cy="188" r="28" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="16"></circle>
-                    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"
-                        d="m40 72 40 40m0-40-40 40m136 56 40 40m0-40-40 40M136 80V40h40"></path>
-                    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"
-                        d="m136 40 16 16c40 40 8 88-24 96"></path>
-                </g>
-            </svg>
-            <h2>Problem Solving</h2>
-            <p>With focus and clear ideas, I fix UI issues and improve performance, helping users navigate with ease
-                and satisfaction.</p>
-        </div>
-        <div class="services_divider"></div>
-        <div class="service_3" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 256 256" aria-hidden="true"
-                stroke="url(#icon-gradient-3)" fill="url(#icon-gradient-3)" style="--size:2.5rem">
-                <defs>
-                    <linearGradient id="icon-gradient-3" x1="23" x2="235" y1="43" y2="202"
-                        gradientUnits="userSpaceOnUse">
-                        <stop stop-color="var(--c-secondary)"></stop>
-                        <stop offset=".5" stop-color="var(--c-secondary)"></stop>
-                        <stop offset="1" stop-color="var(--c-secondary)"></stop>
-                    </linearGradient>
-                </defs>
-                <g>
-                    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"
-                        d="M56 56v55.1c0 39.7 31.8 72.6 71.5 72.9a72 72 0 0 0 72.5-72V56a8 8 0 0 0-8-8H64a8 8 0 0 0-8 8Zm40 168h64m-32-40v40">
-                    </path>
-                    <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"
-                        d="M198.2 128h9.8a32 32 0 0 0 32-32V80a8 8 0 0 0-8-8h-32M58 128H47.9a32 32 0 0 1-32-32V80a8 8 0 0 1 8-8h32">
-                    </path>
-                </g>
-            </svg>
-            <h2>Attention to Detail</h2>
-            <p>I pay close attention to all details to make sure the final product looks great and works perfectly.
-            </p>
-        </div>
+        <% }) %>
     </div>
 </section>
 
 <section id="about" class="about-section">
-    <h2 class="about-title" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-duration="500">About Me</h2>
+    <div class="about-header">
+        <div>
+            <span class="section-label"><%= t("about.label") %></span>
+            <h2 class="about-title" data-aos="fade-up"><%= t("about.title") %></h2>
+        </div>
+        <p class="about-header-intro"><%= t("about.intro") %></p>
+    </div>
 
     <div class="bento-grid">
-        <div class="card intro" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="0">
-            <div class="intro_wrap">
-                <h2 class="card-title">"Web Design Meets Code"</h2>
-                <h4 class="card-subtitle">The Work of Luis</h4>
-                <p class="about-text">
-                    I’m a frontend developer focused on turning ideas into unique websites. The way a website looks is
-                    essential, because it catches the user’s attention. That’s why design and code go
-                    hand by hand.
-                    <br>
-                    <br>
-                    You can view my LinkedIn profile right here, feel free to review it.
-                </p>
-            </div>
-            <div class="bento_divider">
-                <div class="profile-card">
-                    <img src="images/cover.png" class="cover-pic" />
-                    <img src="images/profile.jpeg" class="profile-pic" />
+        <!-- PRESENTACIÓN -->
+        <article class="card about-main" data-aos="fade-up">
+            <span class="about-kicker"><%= t("about.kicker") %></span>
+            <h3 class="about-statement"><%= t("about.statement") %></h3>
+            <p class="about-text"><%= t("about.text") %></p>
 
-                    <!-- Heading Text  -->
-                    <div class="heading_div">
-                        <h2>Luis Bossa</h2>
-                        <p>Frontend Developer with experience in creating attractive and functional web interfaces.
-                        </p>
-                    </div>
+            <ul class="about-facts">
+                <li><strong>+4</strong><span><%= t("about.facts.years") %></span></li>
+                <li><strong><%= projects.length %></strong><span><%= t("about.facts.projects") %></span></li>
+                <li><strong>CR</strong><span><%= t("about.facts.location") %></span></li>
+            </ul>
 
-                    <a href="https://www.linkedin.com/in/luis-bossa-medina-0a2334270/" target="_blank" class="view-btn">
-                        <i class="fab fa-linkedin view-icon"></i>
-                        VIEW PROFILE
-                    </a>
+            <div class="about-profile">
+                <img src="/images/profile.jpeg" class="about-avatar" alt="Luis Bossa" loading="lazy" />
+                <div class="about-profile-text">
+                    <strong>Luis Bossa</strong>
+                    <span><%= t("about.role") %></span>
                 </div>
+                <a href="https://www.linkedin.com/in/luis-bossa-medina-0a2334270/" target="_blank" rel="noreferrer"
+                    class="about-linkedin" aria-label="<%= t("about.linkedinLabel") %>">
+                    <i class="bx bxl-linkedin"></i> LinkedIn
+                </a>
             </div>
-        </div>
+        </article>
 
-        <div class="card tech" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="100">
-            <h2 class="card-title">CREATIVITY & DISCIPLINE</h2>
-            <p class="about-text">
-                I work out frequently, which helps me clear my mind and come up with new ideas.
-                <br><br>
-                Fitness has taught me discipline and patience, qualities I apply to frontend development to
-                keep improving and
-                focus on the details.
-            </p>
-        </div>
+        <!-- CREATIVIDAD -->
+        <article class="card about-habit" data-aos="fade-up" data-aos-delay="100">
+            <span class="about-icon"><i class="bx bx-dumbbell"></i></span>
+            <h3 class="about-card-title"><%= t("about.creativityTitle") %></h3>
+            <p class="about-text"><%- t("about.creativityText") %></p>
+        </article>
 
-        <div class="card time" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="200">
-            <h2 class="card-title">HAVE QUESTIONS OR WANT TO CONNECT?</h2>
-            <p class="about-text">
-                If you want to know more, feel free to reach out. I’m open to new frontend opportunities.
-            </p>
+        <!-- CONTACTO -->
+        <article class="card about-connect" data-aos="fade-up" data-aos-delay="200">
+            <span class="about-icon"><i class="bx bx-conversation"></i></span>
+            <h3 class="about-card-title"><%= t("about.connectTitle") %></h3>
+            <p class="about-text"><%= t("about.connectText") %></p>
             <a class="btn" href="#contact">
-                <i class='bx bx-send'></i> CONTACT ME
+                <i class="bx bx-send"></i> <%= t("about.contactMe") %>
             </a>
-        </div>
+        </article>
 
-        <div class="card passion" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="300">
-            <h2 class="card-title">Development Toolbox</h2>
-            <p class="tech-card-text">
-                <span class="tech-span">Core: </span>HTML, CSS, JavaScript, TypeScript, PHP
-                <br>
-                <span class="tech-span">Frameworks & Libraries: </span>Next, React, Laravel, Tailwind CSS, Bootstrap,
-                Sass
-                <br>
-                <span class="tech-span">Backend & Templating: </span>Node.js, Express, EJS, Pug
-                <br>
-                <span class="tech-span">Page Builders:</span> WordPress, Elementor, Webflow
-                <br>
-                <span class="tech-span">Version Control:</span> Git, GitHub
-            </p>
-
-            <img src="images/skills group.png" alt="" class="skills-group">
-        </div>
+        <!-- HERRAMIENTAS -->
+        <article class="card about-toolbox" data-aos="fade-up" data-aos-delay="300">
+            <img src="/images/skills-group.png" alt="" class="skills-group" loading="lazy">
+            <h3 class="about-card-title"><%= t("about.toolboxTitle") %></h3>
+            <dl class="toolbox-list">
+                <% t("about.toolbox").forEach(([group, tools]) => { %>
+                <div class="toolbox-row">
+                    <dt><%= group %></dt>
+                    <dd>
+                        <% tools.split(", ").forEach((tool) => { %>
+                        <span class="toolbox-chip"><%= tool %></span>
+                        <% }) %>
+                    </dd>
+                </div>
+                <% }) %>
+            </dl>
+        </article>
     </div>
 </section>
 
 <section id="resume" class="exp_section">
-    <h2 class="exp_title" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-duration="300">Professional Journey
-    </h2>
-    <div class="tabs" data-aos-offset="0" data-aos-duration="500">
+    <input type="radio" name="tab" id="tab1" class="tab-input" checked>
+    <input type="radio" name="tab" id="tab2" class="tab-input">
 
-        <input type="radio" name="tab" id="tab1" class="tab-input" checked>
-        <input type="radio" name="tab" id="tab2" class="tab-input">
+    <div class="exp_header">
+        <div>
+            <span class="section-label"><%= t("resume.label") %></span>
+            <h2 class="exp_title" data-aos="fade-up"><%= t("resume.title") %></h2>
+        </div>
 
         <div class="radio_wrap">
-            <label for="tab1" class="tab-label">Education</label>
-            <label for="tab2" class="tab-label">Experience</label>
-        </div>
-
-        <div class="tab-content active" id="education">
-            <div class="contents">
-                <div class="box" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="100">
-                    <h4>2024</h4>
-                    <h3>Self-taught in programming technologies</h3>
-                    <p>
-                        Since the beginning of my career, I have complemented my academic education with independent
-                        learning, modern tools, languages, and frameworks driven by curiosity.
-                    </p>
-                </div>
-
-                <div class="box" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="200">
-                    <h4>2020 - 2023</h4>
-                    <h3>Technological University of Costa Rica (UTC)</h3>
-                    <p>Bachelor's Degree in Computer Engineering.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-content" id="experience">
-            <div class="contents">
-                <div class="box" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="100">
-                    <h4>2024 - 2025</h4>
-                    <h3>Frontend Developer / UI Designer</h3>
-                    <p class="job-exp">CCSS | January 2024 – October 2025</p>
-                    <p>
-                        I worked on frontend projects for the Costa Rican Social Security Fund (CCSS), creating
-                        screens that show medical information from the server in real time. I also developed several
-                        freelance and personal web projects.
-                    </p>
-                </div>
-
-                <div class="box" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="200">
-                    <h4>2022 - 2023</h4>
-                    <h3>Full-Stack Developer</h3>
-                    <p class="job-exp">Servicios Integrales JV & JA | February 2023 – July 2023</p>
-                    <p>
-                        I was instrumental in designing and managing databases using Laravel and PHP for
-                        efficient data storage and retrieval. This included creating database schemas, writing
-                        optimized SQL queries, and implementing strategies for data migration.
-                    </p>
-                </div>
-
-                <div class="box" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="300">
-                    <h4>2020 - 2022</h4>
-                    <h3>Frontend Developer</h3>
-                    <p class="job-exp">EJE Digital | March 2022 – November 2022</p>
-                    <p>
-                        A key part of my role involved creating responsive applications. I made sure
-                        that all the web applications I worked on were fully optimized for different devices and
-                        screen sizes, ensuring a smooth user experience on smartphones, tablets, and desktops.
-                    </p>
-                </div>
-            </div>
+            <span class="tab-indicator" aria-hidden="true"></span>
+            <label for="tab1" class="tab-label active">
+                <%= t("resume.education") %> <span class="tab-count"><%= pad(t("resume.educationItems").length) %></span>
+            </label>
+            <label for="tab2" class="tab-label">
+                <%= t("resume.experience") %> <span class="tab-count"><%= pad(t("resume.experienceItems").length) %></span>
+            </label>
         </div>
     </div>
+
+    <div class="tabs" data-aos="fade-up">
+        <% [["education", "resume.educationItems"], ["experience", "resume.experienceItems"]].forEach(([id, key], tab) => { %>
+        <div class="tab-content<%= tab ? "" : " active" %>" id="<%= id %>">
+            <ol class="timeline">
+                <% t(key).forEach((item) => { %>
+                <li class="timeline-item">
+                    <span class="timeline-date"><%= item.date %></span>
+                    <div class="timeline-body">
+                        <h3><%= item.title %></h3>
+                        <% if (item.org) { %>
+                        <p class="timeline-org"><%= item.org %></p>
+                        <% } %>
+                        <p><%= item.text %></p>
+                    </div>
+                </li>
+                <% }) %>
+            </ol>
+        </div>
+        <% }) %>
+    </div>
 </section>
+
+<% const skills = ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express", "Laravel", "Tailwind", "Sass", "WordPress", "Webflow", "Figma"]; %>
+<div class="skills-band" aria-label="<%= t("skills") %>">
+    <% [false, true].forEach((hidden) => { %>
+    <ul class="skills-track"<% if (hidden) { %> aria-hidden="true"<% } %>>
+        <% skills.forEach((skill) => { %><li><%= skill %></li><% }) %>
+    </ul>
+    <% }) %>
+</div>
 
 <section id="portfolio" class="projects-section">
-    <h3 data-aos="fade-down" data-aos-easing="linear" data-aos-duration="500">My Projects</h3>
-    <div class="slider" style="--quantity: 9;">
+    <span class="section-label"><%= t("portfolio.label") %></span>
+    <h3 data-aos="fade-up"><%= t("portfolio.title") %></h3>
 
-        <div class="list">
-            <div class="item" style="--position: 1">
-                <a href="https://busena.vercel.app/" target="_blank">
+    <div class="carousel" data-carousel>
+        <div class="carousel-track" tabindex="0" aria-label="<%= t("portfolio.carousel") %>" aria-roledescription="carousel">
+            <% projects.forEach((project) => { %>
+            <%- include("partials/project-card", { project, total: projects.length }) %>
+            <% }) %>
+        </div>
 
-                    <video id="projectVideo1" loop playsinline muted preload="auto" poster="/images/poster-1.jpg">
-                        <source src="/videos/project-1.webm" type="video/webm">
-                    </video>
-                </a>
-
-                <div class="content">
-                    <div class="category-info">
-                        <div class="title">
-                            <a href="https://busena.vercel.app/" target="_blank">
-                                Bus tickets website
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="21" height="21">
-                                    <path fill="#ffffff"
-                                        d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="tech-pill">HTML & CSS</span>
-                            <span class="tech-pill">JS</span>
-                            <span class="tech-pill">jQuery</span>
-                            <span class="tech-pill">WordPress</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        This project is a web-based platform that allows users to easily search, book, and manage
-                        bus tickets.
-                        <a href="/project1" class="read-more">Read more</a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="item" style="--position: 2">
-                <a href="https://bodycontrol.vercel.app/" target="_blank">
-
-                    <video id="projectVideo2" loop playsinline muted preload="auto" poster="/images/poster-2.png">
-                        <source src="/videos/project-2.webm" type="video/webm">
-                    </video>
-                </a>
-
-                <div class="content">
-                    <div class="category-info">
-                        <div class="title">
-                            <a href="https://bodycontrol.vercel.app/" target="_blank">
-                                Gym website
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="21" height="21">
-                                    <path fill="#ffffff"
-                                        d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="tech-pill">HTML & CSS</span>
-                            <span class="tech-pill">React JS</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        This project is a web platform for Body Control gym where users schedule classes and manage
-                        memberships...
-                        <a href="/project2" class="read-more">Read more</a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="item" style="--position: 3">
-                <a href="https://instatv.vercel.app/" target="_blank">
-
-                    <video id="projectVideo3" loop playsinline muted preload="auto" poster="/images/poster-3.png">
-                        <source src="/videos/project-3.webm" type="video/webm">
-                    </video>
-                </a>
-
-                <div class="content">
-                    <div class="category-info">
-                        <div class="title">
-                            <a href="https://instatv.vercel.app/" target="_blank">
-                                Stream TV website
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="21" height="21">
-                                    <path fill="#ffffff"
-                                        d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="tech-pill">HTML & CSS</span>
-                            <span class="tech-pill">JS</span>
-                            <span class="tech-pill">Node js</span>
-                            <span class="tech-pill">Express</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Discover and stream your favorite movies and TV shows online easily. Anywhere, from any device…
-                        <a href="/project3" class="read-more">Read more</a>
-                    </p>
-                </div>
-            </div>
-
-
-            <div class="item" style="--position: 4">
-                <a href="https://monchopark.vercel.app/" target="_blank">
-
-                    <video id="projectVideo4" loop playsinline muted preload="auto" poster="/images/poster-4.png">
-                        <source src="/videos/project-4.webm" type="video/webm">
-                    </video>
-                </a>
-
-                <div class="content">
-                    <div class="category-info">
-                        <div class="title">
-                            <a href="https://monchopark.vercel.app/" target="_blank">Moncho Park
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="21" height="21">
-                                    <path fill="#ffffff"
-                                        d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="tech-pill">HTML & CSS</span>
-                            <span class="tech-pill">JS</span>
-                            <span class="tech-pill">jQuery</span>
-                            <span class="project-pill">Node.js</span>
-                            <span class="project-pill">Express</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Web application that showcases the Moncho skatepark in San Ramón, Costa Rica. Users can explore
-                        features...
-                        <a href="/project4" class="read-more">Read more</a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="item" style="--position: 5">
-                <a href="https://hikingguana.vercel.app/" target="_blank">
-
-                    <video id="projectVideo5" loop playsinline muted preload="auto" poster="/images/poster-5.png">
-                        <source src="/videos/project-5.webm" type="video/webm">
-                    </video>
-                </a>
-
-                <div class="content">
-                    <div class="category-info">
-                        <div class="title">
-                            <a href="https://hikingguana.vercel.app/" target="_blank">
-                                Tourism website
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="21" height="21">
-                                    <path fill="#ffffff"
-                                        d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="tech-pill">HTML & CSS</span>
-                            <span class="tech-pill">JS</span>
-                            <span class="tech-pill">jQuery</span>
-                            <span class="tech-pill">Elementor</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Tourism website focused on Guanacaste, Costa Rica. Offers curated hiking routes, travel tips,
-                        and more.. <a href="/project5" class="read-more">Read more</a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="item" style="--position: 6">
-                <a href="https://rbt-one.vercel.app/" target="_blank">
-
-                    <video id="projectVideo6" loop playsinline muted preload="auto" poster="/images/poster-6.png">
-                        <source src="/videos/project-6.webm" type="video/webm">
-                    </video>
-                </a>
-
-                <div class="content">
-                    <div class="category-info">
-                        <div class="title">
-                            <a href="https://rbt-one.vercel.app/" target="_blank">
-                                RBT Custom Store
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="21" height="21">
-                                    <path fill="#ffffff"
-                                        d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="tech-pill">HTML & CSS</span>
-                            <span class="tech-pill">JS</span>
-                        </div>
-                    </div>
-                    <p class="project-description">Streetwear brand inspired by urban culture and bold design. Shop
-                        exclusive drops and statement...
-                        <a href="/project6" class="read-more">Read more</a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="item" style="--position: 7">
-                <a href="https://ecom-nine-alpha.vercel.app/" target="_blank">
-
-                    <video id="projectVideo7" loop playsinline muted preload="auto" poster="/images/poster-7.jpg">
-                        <source src="/videos/project-7.webm" type="video/webm">
-                    </video>
-                </a>
-
-                <div class="content">
-                    <div class="category-info">
-                        <div class="title">
-                            <a href="https://ecom-nine-alpha.vercel.app/" target="_blank">
-                                Fashion Store
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="21" height="21">
-                                    <path fill="#ffffff"
-                                        d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="tech-pill">HTML & CSS</span>
-                            <span class="tech-pill">JS</span>
-                            <span class="tech-pill">Node.js</span>
-                            <span class="tech-pill">Express</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        Elegant fashion store inspired by luxury brands. Includes product filtering, categories, a
-                        shopping cart, and...
-                        <a href="/project7" class="read-more">Read more</a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="item" style="--position: 8">
-                <a href="https://yabla.vercel.app/" target="_blank">
-
-                    <video id="projectVideo8" loop playsinline muted preload="auto" poster="/images/poster-8.png">
-                        <source src="/videos/project-8.webm" type="video/webm">
-                    </video>
-                </a>
-
-                <div class="content">
-                    <div class="category-info">
-                        <div class="title">
-                            <a href="https://yabla.vercel.app/" target="_blank">Chat Web API
-
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="21" height="21">
-                                    <path fill="#ffffff"
-                                        d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="tech-pill">React.js</span>
-                            <span class="tech-pill">CSS</span>
-                            <span class="tech-pill">Webflow</span>
-                            <span class="tech-pill">jQuery</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        A real-time chat web application. It enables users to communicate instantly,
-                        making it a great example of...<a href="/project8" class="read-more">Read
-                            more</a>
-                    </p>
-                </div>
-            </div>
-
-            <div class="item" style="--position: 9">
-                <a href="https://100puntadas.vercel.app/" target="_blank">
-
-                    <video id="projectVideo9" loop playsinline muted preload="auto" poster="/images/poster-9.png">
-                        <source src="/videos/project-9.webm" type="video/webm">
-                    </video>
-                </a>
-
-                <div class="content">
-                    <div class="category-info">
-                        <div class="title">
-                            <a href="https://100puntadas.vercel.app/" target="_blank">100puntadas
-
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="21" height="21">
-                                    <path fill="#ffffff"
-                                        d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="meta">
-                            <span class="tech-pill">HTML & CSS</span>
-                            <span class="tech-pill">JS</span>
-                            <span class="tech-pill">Node.js</span>
-                            <span class="tech-pill">PostSQL</span>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        A crochet swimwear brand offering handmade bikinis and beachwear. Each piece is carefully
-                        crafted with attention to detail
-                        and designed for comfort and style…<a href="/project9" class="read-more">Read more</a>
-                    </p>
-
-                </div>
+        <div class="carousel-controls">
+            <span class="carousel-count">
+                <span data-current>01</span> / <%= pad(projects.length) %>
+            </span>
+            <div class="carousel-progress" aria-hidden="true"><span></span></div>
+            <div class="carousel-buttons">
+                <button type="button" class="carousel-btn" data-prev aria-label="<%= t("portfolio.previous") %>">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button type="button" class="carousel-btn" data-next aria-label="<%= t("portfolio.next") %>">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                        <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
-</section>
-
-<!-- TECHNOLOGIES SECTION -->
-<section id="technologies" class="tech_section">
-    <div class="tech-header" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-duration="300">
-        <h3>Technologies</h3>
-        <p><span class="tech-span">Disclaimer: </span>This project is built using current web tools like HTML, CSS,
-            JavaScript,
-            Node.js, and AOS.</p>
-    </div>
-
-    <div class="tech_div">
-        <div class="language" data-tooltip="Node Js" data-aos="fade-zoom-in" data-aos-easing="linear"
-            data-aos-delay="0">
-            <img src="/images/tech_1.png" alt="Node Js" />
-        </div>
-        <div class="language" data-tooltip="Html" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="100">
-            <img src="/images/tech_2.webp" alt="Html" />
-        </div>
-        <div class="language" data-tooltip="Css" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-delay="200">
-            <img src="/images/tech_3.svg" alt="Css" />
-        </div>
-        <div class="language" data-tooltip="JavaScript" data-aos="fade-zoom-in" data-aos-easing="linear"
-            data-aos-delay="300">
-            <img src="/images/tech_4.svg" alt="JavaScript" />
-        </div>
-        <div class="language" data-tooltip="Animate on Scroll" data-aos="fade-zoom-in" data-aos-easing="linear"
-            data-aos-delay="400">
-            <img src="/images/tech_5.png" alt="Animate on Scroll" />
-        </div>
-    </div>
-
-
 </section>
 
 <!-- CONTACT SECTION -->
 <section id="contact" class="contact-section">
-    <div class="contact-header" data-aos="fade-zoom-in" data-aos-easing="linear" data-aos-duration="300">
-        <h3>Get in Touch</h3>
-        <p>Looking to grow your business? I’m here to help. Freelance projects welcome too!</p>
+    <div class="contact-header" data-aos="fade-up">
+        <span class="section-label"><%= t("contact.label") %></span>
+        <h3><%= t("contact.title") %></h3>
+        <p><%= t("contact.intro") %></p>
     </div>
 
-    <div class="contact-grid" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0"
-        data-aos-duration="500">
+    <div class="contact-grid" data-aos="fade-up">
+        <aside class="contact-info">
+            <h4 class="contact-title"><%= t("contact.infoTitle") %></h4>
+            <p class="contact-intro"><%= t("contact.infoIntro") %></p>
 
-        <div class="info-card divider">
-            <div class="info_wrap">
-                <h3>Contact info</h3>
+            <ul class="contact-list">
+                <li class="contact-row">
+                    <a href="mailto:lebossamedina@gmail.com" class="contact-link">
+                        <span class="contact-icon"><i class="bx bx-envelope"></i></span>
+                        <span class="contact-text">
+                            <span class="contact-label"><%= t("contact.email") %></span>
+                            <span class="contact-value">lebossamedina@<wbr>gmail.com</span>
+                        </span>
+                        <i class="bx bx-right-arrow-alt contact-arrow"></i>
+                    </a>
+                    <button type="button" class="contact-copy" data-copy="lebossamedina@gmail.com"
+                        aria-label="<%= t("contact.copyLabel") %>">
+                        <i class="bx bx-copy"></i><span><%= t("contact.copy") %></span>
+                    </button>
+                </li>
+                <li class="contact-row">
+                    <a href="tel:+50664145674" class="contact-link">
+                        <span class="contact-icon"><i class="bx bx-phone"></i></span>
+                        <span class="contact-text">
+                            <span class="contact-label"><%= t("contact.phone") %></span>
+                            <span class="contact-value">+(506) 6414-5674</span>
+                        </span>
+                        <i class="bx bx-right-arrow-alt contact-arrow"></i>
+                    </a>
+                </li>
+                <li class="contact-row">
+                    <a href="https://maps.google.com/?q=San+Jos%C3%A9,+Costa+Rica" class="contact-link" target="_blank" rel="noreferrer">
+                        <span class="contact-icon"><i class="bx bx-map"></i></span>
+                        <span class="contact-text">
+                            <span class="contact-label"><%= t("contact.location") %></span>
+                            <span class="contact-value">San José, Costa Rica</span>
+                        </span>
+                        <i class="bx bx-right-arrow-alt contact-arrow"></i>
+                    </a>
+                </li>
+            </ul>
 
-                <div class="contact-item">
-                    <p>Email</p>
-                    <a href="#">lebossamedina@gmail.com</a>
-                </div>
-
-                <div class="contact-item">
-                    <p>Phone</p>
-                    <a href="#">+(506) 6414-5674</a>
-                </div>
-
-                <div class="contact-item">
-                    <p>Location</p>
-                    <a href="#">San José, Costa Rica</a>
+            <div class="contact-social">
+                <span class="contact-label"><%= t("contact.findMe") %></span>
+                <div class="contact-social-links">
+                    <a href="https://github.com/luisbossa" target="_blank" rel="noreferrer"><i class="bx bxl-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/luis-bossa-medina-0a2334270/" target="_blank" rel="noreferrer"><i class="bx bxl-linkedin"></i> LinkedIn</a>
+                    <a href="https://wa.me/50664145674" target="_blank" rel="noreferrer"><i class="bx bxl-whatsapp"></i> WhatsApp</a>
                 </div>
             </div>
+        </aside>
 
-            <div class="social-link">
-                <div class="info_wrap">
-                    <p>You can find me on</p>
-                    <a href="https://github.com/luisbossa" target="_blank">GitHub</a>
-                    <a href="https://wa.me/64145674" target="_blank">Whatsapp</a>
+        <div class="contact-form-wrap">
+            <h4 class="contact-title"><%= t("contact.formTitle") %></h4>
+
+            <form id="contactForm" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" class="form-label"><%= t("contact.name") %></label>
+                        <input type="text" id="name" name="name" placeholder="<%= t("contact.namePlaceholder") %>"
+                            autocomplete="name" class="form-control">
+                        <span class="error-message" id="errorName"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label"><%= t("contact.email") %></label>
+                        <input type="email" id="email" name="email" placeholder="<%= t("contact.emailPlaceholder") %>"
+                            autocomplete="email" class="form-control">
+                        <span class="error-message" id="errorEmail"></span>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="info-card">
-            <div class="info-card-content">
-                <h3>Send Message</h3>
-
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name"
-                            class="form-control">
-                        <div class="span-div">
-                            <span class="error-message" id="errorName"></span>
-                        </div>
+                <div class="form-group">
+                    <div class="form-label-row">
+                        <label for="message" class="form-label"><%= t("contact.message") %></label>
+                        <span class="char-count" aria-live="polite"><span data-count>0</span> / 1000</span>
                     </div>
+                    <textarea name="message" id="message" maxlength="1000"
+                        placeholder="<%= t("contact.messagePlaceholder") %>" class="form-control"></textarea>
+                    <span class="error-message" id="errorMessage"></span>
+                </div>
 
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" autocomplete="email"
-                            class="form-control">
-                        <div class="span-div">
-                            <span class="error-message" id="errorEmail"></span>
-                        </div>
-                    </div>
+                <div class="form-footer">
+                    <p class="form-note"><i class="bx bx-lock-alt"></i> <%= t("contact.note") %></p>
+                    <button type="submit" id="submitBtn" class="message-btn">
+                        <span id="btnText"><%= t("contact.send") %> <i class="bx bx-send"></i></span>
+                        <span id="loadingSpinner" class="spinner"></span>
+                    </button>
+                </div>
 
-                    <div class="form-group">
-                        <textarea name="message" id="message" placeholder="Your Message"
-                            class="form-control"></textarea>
-                        <div class="span-div">
-                            <span class="error-message" id="errorMessage"></span>
-                        </div>
-                    </div>
-
-                    <div class="contact-div">
-                        <button type="submit" id="submitBtn" class="message-btn">
-                            <span id="btnText">Send Message</span>
-                            <div id="loadingSpinner" class="spinner"></div>
-                        </button>
-                    </div>
-
-                    <div class="success-message" id="successMessage">
-                        Message sent successfully! I'll get back to you soon.
-                    </div>
-                </form>
-            </div>
+                <div class="success-message" id="successMessage" role="status" aria-live="polite"></div>
+            </form>
         </div>
     </div>
 </section>

@@ -1,7 +1,8 @@
 const videos = document.querySelectorAll("video");
 
 videos.forEach((video) => {
-  video.addEventListener("mouseover", () => video.play());
+  // play() se rechaza si el cursor sale antes de que arranque; no es un error
+  video.addEventListener("mouseover", () => video.play().catch(() => {}));
   video.addEventListener("mouseout", () => video.pause());
 });
 

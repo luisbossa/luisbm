@@ -1,0 +1,432 @@
+/* =========================================================
+   UI
+   Capa de refinamiento visual. Se carga después del resto del
+   CSS para ajustar cada sección sin reescribir sus estilos.
+   ========================================================= */
+
+:root {
+  --font: "Inter", "Arial", sans-serif;
+  --c-muted: #8a8a8a;
+  --c-border-hover: rgba(255, 255, 255, 0.18);
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  --t-fast: 0.35s;
+  --t-base: 0.6s;
+}
+
+/* ---------- TIPOGRAFÍA ---------- */
+
+*,
+.services_wrap h2 {
+  font-family: var(--font);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Permite copiar textos de proyecto y escribir en los campos */
+.project-details p,
+.project-details li,
+input,
+textarea {
+  user-select: text;
+}
+
+.accent {
+  color: var(--c-secondary);
+}
+
+:focus-visible {
+  outline: 1px solid var(--c-secondary);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* ---------- REVEAL AL HACER SCROLL (AOS) ---------- */
+
+/* Recorrido corto: el contenido se asienta, no "salta" */
+html:not(.no-js) [data-aos][data-aos="fade-up"] {
+  transform: translate3d(0, 24px, 0);
+}
+
+/* AOS limita las transiciones a opacity/transform; se amplía para los hovers */
+html:not(.no-js) [data-aos^="fade"][data-aos^="fade"][data-aos] {
+  transition-property: opacity, transform, translate, border-color, box-shadow;
+}
+
+/* ---------- PROGRESO DE LECTURA ---------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--c-secondary);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* ---------- HEADER ---------- */
+
+header {
+  transition: padding var(--t-base) var(--ease-out),
+    background-color var(--t-base) ease, box-shadow var(--t-base) ease,
+    border-color var(--t-base) ease;
+}
+
+.header_div {
+  transition: background-color var(--t-base) ease;
+}
+
+.header_div.scrolled {
+  background: transparent;
+}
+
+.header_div.scrolled header {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  background: rgba(19, 19, 20, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.header_div.scrolled .menu_responsive_box {
+  background: rgba(19, 19, 20, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.menu li a {
+  position: relative;
+  padding: 4px 0;
+}
+
+.menu li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--t-base) var(--ease-out);
+}
+
+.menu li a:hover::after,
+.menu li a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---------- BOTONES ---------- */
+
+.contact-btn,
+.project-btn,
+.bento-grid .btn,
+.view-btn {
+  transition: color var(--t-fast) ease, background-color var(--t-fast) ease,
+    translate var(--t-fast) var(--ease-out);
+}
+
+.contact-btn:hover,
+.project-btn:hover,
+.bento-grid .btn:hover {
+  translate: 0 -1px;
+}
+
+.contact-btn:active,
+.project-btn:active,
+.bento-grid .btn:active {
+  translate: 0 1px;
+}
+
+/* ---------- ETIQUETAS DE SECCIÓN ---------- */
+
+.section-label {
+  display: block;
+  margin-bottom: 0.9rem;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-muted);
+}
+
+.services_title,
+.about-title,
+.exp_title,
+.projects-section h3,
+.contact-header h3 {
+  letter-spacing: -0.025em;
+  font-weight: 800;
+}
+
+/* Títulos con texto en degradado (background-clip: text): el degradado solo
+   pinta dentro de la caja de línea, así que con line-height 1 se cortaban
+   las letras con descendente (g, j, p, q, y). Se deja espacio para ellas. */
+.services_title,
+.about-title,
+.exp_title,
+.projects-section h3,
+.contact-header h3,
+.case-title {
+  line-height: 1.12;
+  padding-bottom: 0.08em;
+}
+
+.contact-header p,
+.project-description {
+  text-wrap: pretty;
+}
+
+.contact-header p {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+/* ---------- HERO ---------- */
+
+.absolute_img {
+  animation: photo-in 1.4s var(--ease-out) 0.15s both;
+  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent);
+  mask-image: linear-gradient(to bottom, #000 82%, transparent);
+}
+
+@keyframes photo-in {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.experience p {
+  line-height: 1.25;
+}
+
+/* Indicador de scroll: se anima con translate en lugar de "top" */
+.scroll-down::before,
+.scroll-down::after {
+  animation-name: scroll-cue;
+  animation-duration: 2.4s;
+  animation-timing-function: var(--ease-out);
+}
+
+@keyframes scroll-cue {
+  0% {
+    opacity: 0;
+    translate: 0 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: 0 28px;
+  }
+}
+
+/* ---------- TARJETAS ---------- */
+
+.card {
+  transition: translate var(--t-base) var(--ease-out),
+    border-color var(--t-base) ease, box-shadow var(--t-base) ease;
+}
+
+.card:hover {
+  translate: 0 -3px;
+  border-color: var(--c-border-hover);
+  box-shadow: var(--shadow), 0 18px 36px -24px rgba(0, 0, 0, 0.7);
+}
+
+/* Foco de luz que sigue al cursor (--x / --y desde about-cards.js) */
+.card::before {
+  background: radial-gradient(
+    420px circle at var(--x, 50%) var(--y, 50%),
+    rgba(255, 255, 255, 0.045),
+    transparent 50%
+  );
+  transition: opacity var(--t-base) ease;
+}
+
+/* ---------- BANDA DE HABILIDADES ---------- */
+
+.skills-band {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  margin-top: 12rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--c-line);
+  border-bottom: 1px solid var(--c-line);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 12% 88%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, #000 12% 88%, transparent);
+}
+
+.skills-track {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  animation: band 60s linear infinite;
+  will-change: transform;
+}
+
+.skills-track li {
+  display: flex;
+  align-items: center;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-weight: 300;
+  color: var(--c-text);
+  white-space: nowrap;
+}
+
+.skills-track li::after {
+  content: "/";
+  margin: 0 1.6rem;
+  color: var(--c-line);
+}
+
+@keyframes band {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ---------- PORTFOLIO ---------- */
+
+.projects-section {
+  margin-top: 8rem;
+}
+
+/* Tarjetas del carrusel: la activa en primer plano, el resto en segundo */
+.carousel-track .item {
+  transition: opacity var(--t-base) ease, scale var(--t-base) var(--ease-out),
+    border-color var(--t-base) ease;
+}
+
+.carousel-track .item:not(.is-active) {
+  opacity: 0.45;
+  scale: 0.96;
+}
+
+.carousel-track .item.is-active:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.carousel-track .item video {
+  display: block;
+  filter: brightness(0.82);
+  transition: filter var(--t-base) ease;
+}
+
+.carousel-track .item:hover video {
+  filter: brightness(1);
+}
+
+.carousel-btn {
+  transition: color var(--t-fast) ease, border-color var(--t-fast) ease,
+    translate var(--t-fast) var(--ease-out);
+}
+
+.carousel-btn:active {
+  translate: 0 1px;
+}
+
+.item-index {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+  color: var(--c-muted);
+}
+
+.title a svg {
+  transition: translate var(--t-fast) var(--ease-out);
+}
+
+.title a:hover svg {
+  translate: 2px -2px;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #1e1e1e, #262626, #1e1e1e);
+  background-size: 200% 100%;
+  min-height: 420px;
+}
+
+/* ---------- MOVIMIENTO REDUCIDO ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skills-track {
+    animation: none !important;
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1020px) {
+  .carousel-track .item video {
+    filter: none;
+  }
+
+  .skills-band {
+    margin-top: 6rem;
+  }
+
+  .projects-section {
+    margin-top: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    --card-w: 86vw;
+  }
+
+  .carousel-track {
+    align-items: flex-start;
+    gap: 1rem;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .absolute_img {
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-radius: 16px;
+  }
+
+}

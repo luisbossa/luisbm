@@ -1,76 +1,75 @@
-const inputs = document.querySelectorAll(".tab-input");
+// TABS
 const labels = document.querySelectorAll(".tab-label");
 const contents = document.querySelectorAll(".tab-content");
 
-inputs.forEach((input) => {
+document.querySelectorAll(".tab-input").forEach((input) => {
   input.addEventListener("click", () => {
-    labels.forEach((label) => label.classList.remove("active"));
-
-    const label = document.querySelector(`label[for="${input.id}"]`);
-    label.classList.add("active");
-
-    contents.forEach((content) => content.classList.remove("active"));
+    labels.forEach((label) =>
+      label.classList.toggle("active", label.htmlFor === input.id),
+    );
 
     const contentId = input.id === "tab1" ? "education" : "experience";
-    document.getElementById(contentId).classList.add("active");
+    contents.forEach((content) =>
+      content.classList.toggle("active", content.id === contentId),
+    );
   });
 });
+
+// LIKES
+const MAX_LIKES = 5;
+
+const readLikes = (key) => {
+  try {
+    return parseInt(localStorage.getItem(key), 10) || 0;
+  } catch {
+    return 0;
+  }
+};
+
+const saveLikes = (key, count) => {
+  try {
+    localStorage.setItem(key, count);
+  } catch {
+    // localStorage no disponible (modo privado, etc.)
+  }
+};
 
 document.querySelectorAll(".btn-label").forEach((label) => {
   const likeCounter = label.querySelector(".like-text-content");
   const inputCheckbox = label.querySelector(".input-box");
   const solidIcon = label.querySelector("#icon-like-solid");
   const regularIcon = label.querySelector("#icon-like-regular");
-  const maxLikes = 5;
   const key = `likeCount_${inputCheckbox.id}`;
 
-  let storedData = localStorage.getItem(key);
-  let count = storedData ? parseInt(storedData) : 0;
-  likeCounter.textContent = count;
+  let count = readLikes(key);
 
-  if (count > 0) {
-    inputCheckbox.checked = true;
-    solidIcon.style.display = "inline";
-    regularIcon.style.display = "none";
-  } else {
-    inputCheckbox.checked = false;
-    solidIcon.style.display = "none";
-    regularIcon.style.display = "inline";
+  function render(liked) {
+    inputCheckbox.checked = liked;
+    likeCounter.textContent = count;
+    solidIcon.style.display = liked ? "inline" : "none";
+    regularIcon.style.display = liked ? "none" : "inline";
+
+    if (count >= MAX_LIKES) {
+      label.classList.add("disabled");
+      label.style.pointerEvents = "none";
+    }
   }
 
-  if (count >= maxLikes) {
-    label.classList.add("disabled");
-    label.style.pointerEvents = "none";
-  }
+  render(count > 0);
 
   label.addEventListener("click", (e) => {
     if (e.target.tagName === "INPUT") return;
 
-    let count = parseInt(likeCounter.textContent);
-
-    if (count >= maxLikes && !inputCheckbox.checked) {
+    if (!inputCheckbox.checked && count < MAX_LIKES) {
+      count++;
+      render(true);
+    } else if (inputCheckbox.checked && count > 0) {
+      count--;
+      render(false);
+    } else {
       return;
     }
 
-    if (!inputCheckbox.checked && count < maxLikes) {
-      inputCheckbox.checked = true;
-      count++;
-      likeCounter.textContent = count;
-      solidIcon.style.display = "inline";
-      regularIcon.style.display = "none";
-      localStorage.setItem(key, count);
-
-      if (count >= maxLikes) {
-        label.classList.add("disabled");
-        label.style.pointerEvents = "none";
-      }
-    } else if (inputCheckbox.checked && count > 0) {
-      inputCheckbox.checked = false;
-      count--;
-      likeCounter.textContent = count;
-      solidIcon.style.display = "none";
-      regularIcon.style.display = "inline";
-      localStorage.setItem(key, count);
-    }
+    saveLikes(key, count);
   });
 });

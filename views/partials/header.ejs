@@ -1,0 +1,23 @@
+<div class="header_div">
+    <header data-aos="slide-down" data-aos-duration="600" data-aos-easing="ease-out">
+        <div class="logo">
+            <img class="letter_logo" src="/images/logo.png" alt="logo">uis Bossa
+        </div>
+
+        <div class="menu_wrap">
+            <%- include("nav-links") %>
+        </div>
+
+        <input hidden class="check-icon" id="check-icon" name="check-icon" type="checkbox" />
+        <label class="icon-menu" for="check-icon">
+            <div class="bar bar--1"></div>
+            <div class="bar bar--2"></div>
+            <div class="bar bar--3"></div>
+        </label>
+    </header>
+
+    <!-- RESPONSIVE MENU -->
+    <div class="menu_responsive_box">
+        <%- include("nav-links") %>
+    </div>
+</div>
